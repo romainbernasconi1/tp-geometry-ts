@@ -13,6 +13,8 @@ describe("test LineString", () => {
             new Point([0.0,0.0]),
             new Point([3.0,4.0])
         ]);
+        expect(g.getNumPoints()).to.equal(2);
+        expect(g.isEmpty()).to.be.false;
     });
     
     it("should return 'LineString' for getType()",() => {
