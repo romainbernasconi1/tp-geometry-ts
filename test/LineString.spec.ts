@@ -6,6 +6,7 @@ describe("test LineString", () => {
     it("test default constructor", () => {
         const g = new LineString();
         expect(g.getNumPoints()).to.equal(0);
+        expect(g.isEmpty()).to.be.true;
     });
     it("test constructor with coordinates", () => {
         const g = new LineString([
