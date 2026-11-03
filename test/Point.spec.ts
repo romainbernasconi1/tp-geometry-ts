@@ -19,5 +19,15 @@ describe("test Point", () => {
         const p = new Point();
         expect(p.getType()).to.equal("Point");
     });
+    it("should translate coordinates with translate(dx, dy)",() => {
+        const p = new Point([3.0,4.0]);
+        p.translate(1.0,1.0);
+        expect(p.x()).to.equal(4.0);
+        expect(p.y()).to.equal(5.0);
+    });
+    it("should not translate coordinates with translate(dx, dy) when point is empty")
+        const p = new Point();
+        p.translate(1.0,1.0);
+        expect(p.isEmpty()).to.be.true;
 });
 

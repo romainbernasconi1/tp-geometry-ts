@@ -22,7 +22,7 @@ describe("test LineString", () => {
         expect(g.getType()).to.equal("LineString");
     });
 
-    it("should return expected points with GetPointN", () =>{
+    it("should return expected points with GetPointN()", () =>{
         const a = new Point([0.0, 0.0]);
         const b = new Point([3.0, 4.0]);
         const g = new LineString([a,b]);
@@ -30,5 +30,18 @@ describe("test LineString", () => {
         expect(g.getPointN(0)).to.equal(a);
         expect(g.getPointN(1)).to.equal(b);
     });
-
+    it("should translate each point with translate(dx, dy)", () => {
+        const g = new LineString([
+            new Point([0.0,0.0]),
+            new Point([3.0,4.0])
+        ]);
+        g.translate(1.0,1.0);
+        expect(g.getPointN(0).getCoordinate()).to.deep.equal([1.0,1.0]);
+        expect(g.getPointN(1).getCoordinate()).to.deep.equal([4.0,5.0]);
+    });
+    it("should not translate an empty lineString", () => {
+        const g = new LineString();
+        g.translate(1.0,1.0);
+        expect(g.isEmpty()).to.be.true;
+    });
 });
