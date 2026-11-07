@@ -45,5 +45,15 @@ describe("test Point", () => {
         const copy = p.clone();
         expect(copy.isEmpty()).to.be.true;
     });
+
+    it("should return an empty envelope for an empty point", () => {
+        const p = new Point();
+        expect(p.getEnvelope().isEmpty()).to.be.true;
+    });
+
+    it("should return the envelope of a point", () => {
+        const p = new Point([3.0,4.0]);
+        expect(p.getEnvelope().toString()).to.equal("[3,4,3,4]");
+    });
 });
 
