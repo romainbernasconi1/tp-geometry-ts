@@ -1,4 +1,5 @@
 import Coordinate from "./Coordinate";
+
 export default class Envelope {
     private bottomLeft: Coordinate;
     private topRight: Coordinate;
@@ -28,4 +29,10 @@ export default class Envelope {
         return this.isEmpty() ? Number.NaN : this.topRight[1];
     }
 
+    toString(): string {
+        if (this.isEmpty()) {
+            return "[]";
+        }
+        return "[" + this.getXmin() + "," + this.getYmin() + "," + this.getXmax() + "," + this.getYmax() + "]";
+    }
 }
