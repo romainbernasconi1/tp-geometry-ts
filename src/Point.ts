@@ -2,6 +2,7 @@ import Coordinate from "./Coordinate";
 import Geometry from "./Geometry";
 import Envelope from "./Envelope";
 import EnvelopeBuilder from "./EnvelopeBuilder";
+import GeometryVisitor from "./GeometryVisitor";
 
 export default class Point implements Geometry {
   private coordinate?: Coordinate;
@@ -38,6 +39,10 @@ export default class Point implements Geometry {
     const builder = new EnvelopeBuilder();
     builder.insert(this.coordinate);
     return builder.build();
+  }
+
+  accept(visitor: GeometryVisitor): void {
+    visitor.visitPoint(this);
   }
 
   x(): number {
